@@ -19,7 +19,6 @@ bool UserModel::insert(User &user){
             user.setId(mysql_insert_id(mysql.getConnection()));
             return true;
         }
-        return true;
     }
     
     return false;
@@ -62,3 +61,12 @@ bool UserModel::updateState(User &user){
     }
     return false;
 }
+
+void UserModel::resetState(){
+    char sql[1024] = {0};
+    sprintf(sql, "update user set state = 'offline' where state = 'online'");
+    MY_SQL mysql;
+    if(mysql.connect()){
+        mysql.update(sql);
+    }
+}   

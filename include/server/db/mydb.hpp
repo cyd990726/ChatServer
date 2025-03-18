@@ -3,10 +3,13 @@
 #include <string>
 #include<mysql/mysql.h>
 
+//将数据库的基本操作方法封装成对象。方便使用。
+
+
 using namespace std;
 
-static string server = "127.0.0.1";
-static string user = "root";
+static string server = "chenyandon.xyz";
+static string user = "cyd";
 static string password = "Cyd19990726";
 static string dbname = "chat";
 
@@ -19,7 +22,6 @@ public:
     bool update(string sql);
     MYSQL_RES *query(string sql);
     MYSQL *getConnection();
-    
 
 private:
 

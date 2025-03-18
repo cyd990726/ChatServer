@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/my_study/ChatServer/ChatProject
+CMAKE_SOURCE_DIR = /home/cyd/projects/cluster-server
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/my_study/ChatServer/ChatProject/build
+CMAKE_BINARY_DIR = /home/cyd/projects/cluster-server/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,14 +80,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /root/my_study/ChatServer/ChatProject/build && $(CMAKE_COMMAND) -E cmake_progress_start /root/my_study/ChatServer/ChatProject/build/CMakeFiles /root/my_study/ChatServer/ChatProject/build/src/client/CMakeFiles/progress.marks
-	cd /root/my_study/ChatServer/ChatProject/build && $(MAKE) -f CMakeFiles/Makefile2 src/client/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/my_study/ChatServer/ChatProject/build/CMakeFiles 0
+	cd /home/cyd/projects/cluster-server/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/cyd/projects/cluster-server/build/CMakeFiles /home/cyd/projects/cluster-server/build/src/client/CMakeFiles/progress.marks
+	cd /home/cyd/projects/cluster-server/build && $(MAKE) -f CMakeFiles/Makefile2 src/client/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cyd/projects/cluster-server/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /root/my_study/ChatServer/ChatProject/build && $(MAKE) -f CMakeFiles/Makefile2 src/client/clean
+	cd /home/cyd/projects/cluster-server/build && $(MAKE) -f CMakeFiles/Makefile2 src/client/clean
 .PHONY : clean
 
 # The main clean target
@@ -97,22 +97,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /root/my_study/ChatServer/ChatProject/build && $(MAKE) -f CMakeFiles/Makefile2 src/client/preinstall
+	cd /home/cyd/projects/cluster-server/build && $(MAKE) -f CMakeFiles/Makefile2 src/client/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /root/my_study/ChatServer/ChatProject/build && $(MAKE) -f CMakeFiles/Makefile2 src/client/preinstall
+	cd /home/cyd/projects/cluster-server/build && $(MAKE) -f CMakeFiles/Makefile2 src/client/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /root/my_study/ChatServer/ChatProject/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/cyd/projects/cluster-server/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/client/CMakeFiles/ChatClient.dir/rule:
-	cd /root/my_study/ChatServer/ChatProject/build && $(MAKE) -f CMakeFiles/Makefile2 src/client/CMakeFiles/ChatClient.dir/rule
+	cd /home/cyd/projects/cluster-server/build && $(MAKE) -f CMakeFiles/Makefile2 src/client/CMakeFiles/ChatClient.dir/rule
 .PHONY : src/client/CMakeFiles/ChatClient.dir/rule
 
 # Convenience name for target.
@@ -122,35 +122,35 @@ ChatClient: src/client/CMakeFiles/ChatClient.dir/rule
 
 # fast build rule for target.
 ChatClient/fast:
-	cd /root/my_study/ChatServer/ChatProject/build && $(MAKE) -f src/client/CMakeFiles/ChatClient.dir/build.make src/client/CMakeFiles/ChatClient.dir/build
+	cd /home/cyd/projects/cluster-server/build && $(MAKE) -f src/client/CMakeFiles/ChatClient.dir/build.make src/client/CMakeFiles/ChatClient.dir/build
 .PHONY : ChatClient/fast
 
-chatclient.o: chatclient.cpp.o
+main.o: main.cpp.o
 
-.PHONY : chatclient.o
+.PHONY : main.o
 
 # target to build an object file
-chatclient.cpp.o:
-	cd /root/my_study/ChatServer/ChatProject/build && $(MAKE) -f src/client/CMakeFiles/ChatClient.dir/build.make src/client/CMakeFiles/ChatClient.dir/chatclient.cpp.o
-.PHONY : chatclient.cpp.o
+main.cpp.o:
+	cd /home/cyd/projects/cluster-server/build && $(MAKE) -f src/client/CMakeFiles/ChatClient.dir/build.make src/client/CMakeFiles/ChatClient.dir/main.cpp.o
+.PHONY : main.cpp.o
 
-chatclient.i: chatclient.cpp.i
+main.i: main.cpp.i
 
-.PHONY : chatclient.i
+.PHONY : main.i
 
 # target to preprocess a source file
-chatclient.cpp.i:
-	cd /root/my_study/ChatServer/ChatProject/build && $(MAKE) -f src/client/CMakeFiles/ChatClient.dir/build.make src/client/CMakeFiles/ChatClient.dir/chatclient.cpp.i
-.PHONY : chatclient.cpp.i
+main.cpp.i:
+	cd /home/cyd/projects/cluster-server/build && $(MAKE) -f src/client/CMakeFiles/ChatClient.dir/build.make src/client/CMakeFiles/ChatClient.dir/main.cpp.i
+.PHONY : main.cpp.i
 
-chatclient.s: chatclient.cpp.s
+main.s: main.cpp.s
 
-.PHONY : chatclient.s
+.PHONY : main.s
 
 # target to generate assembly for a file
-chatclient.cpp.s:
-	cd /root/my_study/ChatServer/ChatProject/build && $(MAKE) -f src/client/CMakeFiles/ChatClient.dir/build.make src/client/CMakeFiles/ChatClient.dir/chatclient.cpp.s
-.PHONY : chatclient.cpp.s
+main.cpp.s:
+	cd /home/cyd/projects/cluster-server/build && $(MAKE) -f src/client/CMakeFiles/ChatClient.dir/build.make src/client/CMakeFiles/ChatClient.dir/main.cpp.s
+.PHONY : main.cpp.s
 
 # Help Target
 help:
@@ -161,9 +161,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... ChatClient"
-	@echo "... chatclient.o"
-	@echo "... chatclient.i"
-	@echo "... chatclient.s"
+	@echo "... main.o"
+	@echo "... main.i"
+	@echo "... main.s"
 .PHONY : help
 
 
@@ -175,6 +175,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /root/my_study/ChatServer/ChatProject/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/cyd/projects/cluster-server/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

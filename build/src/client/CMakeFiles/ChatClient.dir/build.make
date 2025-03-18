@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/my_study/ChatServer/ChatProject
+CMAKE_SOURCE_DIR = /home/cyd/projects/cluster-server
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/my_study/ChatServer/ChatProject/build
+CMAKE_BINARY_DIR = /home/cyd/projects/cluster-server/build
 
 # Include any dependencies generated for this target.
 include src/client/CMakeFiles/ChatClient.dir/depend.make
@@ -57,31 +57,31 @@ include src/client/CMakeFiles/ChatClient.dir/progress.make
 # Include the compile flags for this target's objects.
 include src/client/CMakeFiles/ChatClient.dir/flags.make
 
-src/client/CMakeFiles/ChatClient.dir/chatclient.cpp.o: src/client/CMakeFiles/ChatClient.dir/flags.make
-src/client/CMakeFiles/ChatClient.dir/chatclient.cpp.o: ../src/client/chatclient.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/my_study/ChatServer/ChatProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/client/CMakeFiles/ChatClient.dir/chatclient.cpp.o"
-	cd /root/my_study/ChatServer/ChatProject/build/src/client && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ChatClient.dir/chatclient.cpp.o -c /root/my_study/ChatServer/ChatProject/src/client/chatclient.cpp
+src/client/CMakeFiles/ChatClient.dir/main.cpp.o: src/client/CMakeFiles/ChatClient.dir/flags.make
+src/client/CMakeFiles/ChatClient.dir/main.cpp.o: ../src/client/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cyd/projects/cluster-server/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/client/CMakeFiles/ChatClient.dir/main.cpp.o"
+	cd /home/cyd/projects/cluster-server/build/src/client && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ChatClient.dir/main.cpp.o -c /home/cyd/projects/cluster-server/src/client/main.cpp
 
-src/client/CMakeFiles/ChatClient.dir/chatclient.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ChatClient.dir/chatclient.cpp.i"
-	cd /root/my_study/ChatServer/ChatProject/build/src/client && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/my_study/ChatServer/ChatProject/src/client/chatclient.cpp > CMakeFiles/ChatClient.dir/chatclient.cpp.i
+src/client/CMakeFiles/ChatClient.dir/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ChatClient.dir/main.cpp.i"
+	cd /home/cyd/projects/cluster-server/build/src/client && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/cyd/projects/cluster-server/src/client/main.cpp > CMakeFiles/ChatClient.dir/main.cpp.i
 
-src/client/CMakeFiles/ChatClient.dir/chatclient.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ChatClient.dir/chatclient.cpp.s"
-	cd /root/my_study/ChatServer/ChatProject/build/src/client && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/my_study/ChatServer/ChatProject/src/client/chatclient.cpp -o CMakeFiles/ChatClient.dir/chatclient.cpp.s
+src/client/CMakeFiles/ChatClient.dir/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ChatClient.dir/main.cpp.s"
+	cd /home/cyd/projects/cluster-server/build/src/client && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/cyd/projects/cluster-server/src/client/main.cpp -o CMakeFiles/ChatClient.dir/main.cpp.s
 
 # Object files for target ChatClient
 ChatClient_OBJECTS = \
-"CMakeFiles/ChatClient.dir/chatclient.cpp.o"
+"CMakeFiles/ChatClient.dir/main.cpp.o"
 
 # External object files for target ChatClient
 ChatClient_EXTERNAL_OBJECTS =
 
-../bin/ChatClient: src/client/CMakeFiles/ChatClient.dir/chatclient.cpp.o
+../bin/ChatClient: src/client/CMakeFiles/ChatClient.dir/main.cpp.o
 ../bin/ChatClient: src/client/CMakeFiles/ChatClient.dir/build.make
 ../bin/ChatClient: src/client/CMakeFiles/ChatClient.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/root/my_study/ChatServer/ChatProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable ../../../bin/ChatClient"
-	cd /root/my_study/ChatServer/ChatProject/build/src/client && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ChatClient.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/cyd/projects/cluster-server/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable ../../../bin/ChatClient"
+	cd /home/cyd/projects/cluster-server/build/src/client && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ChatClient.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 src/client/CMakeFiles/ChatClient.dir/build: ../bin/ChatClient
@@ -89,10 +89,10 @@ src/client/CMakeFiles/ChatClient.dir/build: ../bin/ChatClient
 .PHONY : src/client/CMakeFiles/ChatClient.dir/build
 
 src/client/CMakeFiles/ChatClient.dir/clean:
-	cd /root/my_study/ChatServer/ChatProject/build/src/client && $(CMAKE_COMMAND) -P CMakeFiles/ChatClient.dir/cmake_clean.cmake
+	cd /home/cyd/projects/cluster-server/build/src/client && $(CMAKE_COMMAND) -P CMakeFiles/ChatClient.dir/cmake_clean.cmake
 .PHONY : src/client/CMakeFiles/ChatClient.dir/clean
 
 src/client/CMakeFiles/ChatClient.dir/depend:
-	cd /root/my_study/ChatServer/ChatProject/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/my_study/ChatServer/ChatProject /root/my_study/ChatServer/ChatProject/src/client /root/my_study/ChatServer/ChatProject/build /root/my_study/ChatServer/ChatProject/build/src/client /root/my_study/ChatServer/ChatProject/build/src/client/CMakeFiles/ChatClient.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/cyd/projects/cluster-server/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/cyd/projects/cluster-server /home/cyd/projects/cluster-server/src/client /home/cyd/projects/cluster-server/build /home/cyd/projects/cluster-server/build/src/client /home/cyd/projects/cluster-server/build/src/client/CMakeFiles/ChatClient.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : src/client/CMakeFiles/ChatClient.dir/depend
 

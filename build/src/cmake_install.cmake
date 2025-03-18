@@ -1,4 +1,4 @@
-# Install script for directory: /root/my_study/ChatServer/ChatProject/src
+# Install script for directory: /home/cyd/projects/cluster-server/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -12,7 +12,7 @@ if(NOT DEFINED CMAKE_INSTALL_CONFIG_NAME)
     string(REGEX REPLACE "^[^A-Za-z0-9_]+" ""
            CMAKE_INSTALL_CONFIG_NAME "${BUILD_TYPE}")
   else()
-    set(CMAKE_INSTALL_CONFIG_NAME "")
+    set(CMAKE_INSTALL_CONFIG_NAME "Debug")
   endif()
   message(STATUS "Install configuration: \"${CMAKE_INSTALL_CONFIG_NAME}\"")
 endif()
@@ -39,8 +39,8 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/root/my_study/ChatServer/ChatProject/build/src/server/cmake_install.cmake")
-  include("/root/my_study/ChatServer/ChatProject/build/src/client/cmake_install.cmake")
+  include("/home/cyd/projects/cluster-server/build/src/server/cmake_install.cmake")
+  include("/home/cyd/projects/cluster-server/build/src/client/cmake_install.cmake")
 
 endif()
 
