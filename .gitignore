@@ -1,0 +1,29 @@
+# C++编译产物
+*.o
+*.obj
+*.exe
+*.out
+*.dll
+*.so
+*.dylib
+
+# 构建目录
+build/
+bin/
+obj/
+out/
+
+# 调试相关文件
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# 临时文件
+*~
+*.swp
+*.swo
+
+# 系统文件
+.DS_Store  # macOS
+Thumbs.db  # Windows
