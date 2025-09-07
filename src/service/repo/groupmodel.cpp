@@ -29,7 +29,7 @@ void GroupModel::addGroup(int userid, int groupid, string role){
     }
 }
 //查询用户所在群组信息
-vector<Group> GroupModel::querGroups(int userid){
+vector<Group> GroupModel::queryGroups(int userid){
     char sql[1024] = {0};
     //allgroup和groupuser联合查询
     sprintf(sql, "select a.id, a.groupname, a.groupdesc from allgroup a inner join groupuser b on a.id = b.groupid where b.userid = %d", userid);
@@ -133,13 +133,13 @@ void GroupModel::addGroup(::google::protobuf::RpcController* controller,
     response->mutable_result()->set_errmsg("success");
     done->Run();
 }
-void queryGroups(::google::protobuf::RpcController* controller,
+void GroupModel::queryGroups(::google::protobuf::RpcController* controller,
                     const ::fixbug::queryGroupsRequest* request,
                     ::fixbug::queryGroupsResponse* response,
                     ::google::protobuf::Closure* done){
     int userid = request->userid();
     //执行查询群组业务
-    vector<Group> groupVec = querGroups(userid);
+    vector<Group> groupVec = queryGroups(userid);
 
     for(Group &group : groupVec){   
         fixbug::Group *pgroup = response->add_groups();

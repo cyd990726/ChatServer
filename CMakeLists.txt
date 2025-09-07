@@ -4,6 +4,8 @@ project(CHAT_PROJECT)
 #配置编译选项
 set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} -g)
 
+find_package(Protobuf REQUIRED)
+include_directories(${PROTOBUF_INCLUDE_DIRS})
 #配置头文件的搜索路径
 include_directories(/usr/include)
 include_directories(/usr/local/include)
@@ -19,7 +21,7 @@ include_directories(${PROJECT_SOURCE_DIR}/include/thirdparty/db)
 include_directories(${PROJECT_SOURCE_DIR}/include/thirdparty/redis)
 include_directories(${PROJECT_SOURCE_DIR}/include/public)
 include_directories(${PROJECT_SOURCE_DIR}/include/proxy)
-
+include_directories(${PROJECT_SOURCE_DIR}/include/pb)
 
 # 设置项目库文件搜索路径
 link_directories(${PROJECT_SOURCE_DIR}/lib)

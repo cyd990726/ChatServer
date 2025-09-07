@@ -141,3 +141,15 @@ void UserModel::updateState(::google::protobuf::RpcController* controller,
     //把数据返回给调用方               
     done->Run();
 }
+
+void UserModel::resetState(::google::protobuf::RpcController* controller,
+                    const ::fixbug::ResetStateRequest* request,
+                    ::fixbug::ResetStateResponse* response,
+                    ::google::protobuf::Closure* done) {
+    //重置状态
+    resetState();
+    response->mutable_result()->set_errcode(0);
+    response->mutable_result()->set_errmsg("success");
+    //把数据返回给调用方               
+    done->Run();
+}

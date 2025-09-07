@@ -58,10 +58,6 @@ public:
 private:
     ChatService();//阻止构造
     unordered_map<MSGID, MsgHandler> _msgHandlerMap;
-    // UserModel _userModel;
-    // OfflineMsgModel _offlineMsgModel;
-    // FriendModel _friendModel;
-    // GroupModel _groupModel;
     RepoProxy _repoProxy;
 
     Redis _redis;
