@@ -1,6 +1,7 @@
 #include "chatserver.hpp"
 #include "chatservice.hpp"
 #include "signal.h"
+#include "mprpcapplication.h"
 
 void resetHandler(int sig){
     //重置用户状态
@@ -14,6 +15,8 @@ int main(int argc, char **argv){
         cout<<"param error!ep:./ChatServer 6000 \n";
         return 0;
     }
+    //调用rpc框架初始化函数
+    MprpcApplication::Init(argc, argv);
     
     //注册信号处理
     signal(SIGINT, &resetHandler);//自己ctrl+c

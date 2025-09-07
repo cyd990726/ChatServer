@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+package fixbug;
+
+option cc_generic_services = true;
+
+import "common.proto";
+
+
+message CreateGroupRequest
+{
+    Group group = 1;
+}
+
+message CreateGroupResponse
+{
+    ResultCode result = 1;
+}
+
+
+message AddGroupRequest
+{
+    uint32 userid = 1;
+    uint32 groupid = 2;
+    string role = 3;
+}
+
+message AddGroupResponse
+{
+    ResultCode result = 1;
+}
+
+message queryGroupsRequest
+{
+    uint32 userid = 1;
+}
+
+message queryGroupsResponse
+{
+    ResultCode result = 1;
+    repeated Group groups = 2;
+}
+
+message queryGroupUsersRequest
+{
+    uint32 userid = 1;
+    uint32 groupid = 2;
+}
+
+message queryGroupUsersResponse
+{
+    ResultCode result = 1;
+    repeated uint32 userids = 2;
+}
+
+// 聊天模块
+service group_model
+{
+    //创建群组
+    rpc createGroup(CreateGroupRequest) returns(CreateGroupResponse);
+    //加入群组
+    rpc addGroup(AddGroupRequest) returns(AddGroupResponse);
+    //查询用户所在群组信息
+    rpc queryGroups(queryGroupsRequest) returns(queryGroupsResponse);
+    //根据指定的groupid查询群组用户id列表，除userid自己，主要用户群聊业务给群组其他成员发消息
+    rpc queryGroupUsers(queryGroupUsersRequest) returns(queryGroupUsersResponse);
+}

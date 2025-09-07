@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+package fixbug;
+
+option cc_generic_services = true;
+
+import "common.proto";
+
+message InsertOfflineMessageRequest
+{
+    uint32 userid = 1;
+    bytes msg = 2;
+}
+message InsertOfflineMessageResponse
+{
+    ResultCode result = 1;
+}
+
+message RemoveOfflineMessageRequest
+{
+    uint32 userid = 1;
+}
+message RemoveOfflineMessageResponse
+{
+    ResultCode result = 1;
+}
+
+message QueryOfflineMessageRequest
+{
+    uint32 userid = 1;
+}
+message QueryOfflineMessageResponse
+{
+    ResultCode result = 1;
+    repeated bytes msgs = 2;
+}
+
+
+// 聊天模块
+service offline_message_model
+{
+    rpc insert(InsertOfflineMessageRequest) returns (InsertOfflineMessageResponse);
+    rpc remove(RemoveOfflineMessageRequest) returns (RemoveOfflineMessageResponse);
+    rpc query(QueryOfflineMessageRequest) returns (QueryOfflineMessageResponse);
+}

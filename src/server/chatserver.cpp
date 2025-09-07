@@ -49,11 +49,11 @@ void ChatServer::onMessage(const TcpConnectionPtr& conn,//连接
      * 通过js["msgid"]来获取事先绑定好的服务msghandler
      * 直接传入约定好的参数(const TcpConnectionPtr& conn,json &js, Timestamp time)，
      * 就可以获取到相应的服务啦。
-     * 这样我们就不需要再网络模块里面写业务代码。
+     * 这样我们就不需要在网络模块里面写业务代码。
      * 完全实现解耦合！
      * */
     auto handler = ChatService::instance()->getHandler(js["msgid"].get<MSGID>());
     //执行回调
     handler(conn, js, time);
-    
+
 }

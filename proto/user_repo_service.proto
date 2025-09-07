@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+package fixbug;
+
+option cc_generic_services = true;
+
+import "common.proto";
+
+
+
+message InsertUserRequest
+{
+    User user = 1;
+}
+
+message InsertUserResponse
+{
+    ResultCode result = 1;
+}
+
+message queryUserRequest
+{
+    uint32 userid = 1;
+}
+message queryUserResponse
+{
+    ResultCode result = 1;
+    User user = 2;
+}
+message UpdateStateRequest
+{
+    User user = 1;
+}
+message UpdateStateResponse
+{
+    ResultCode result = 1;
+}
+message ResetStateRequest
+{
+    uint32 userid = 1;
+}
+message ResetStateResponse
+{
+    ResultCode result = 1;
+}
+
+// 聊天模块
+service user_model
+{
+    rpc insert(InsertUserRequest) returns (InsertUserResponse);
+    rpc query(queryUserRequest) returns (queryUserResponse);
+    rpc updateState(UpdateStateRequest) returns (UpdateStateResponse);
+    rpc resetState(ResetStateRequest) returns (ResetStateResponse);
+}
