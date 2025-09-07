@@ -23,13 +23,13 @@ public:
     void setDesc(string desc){
         this->_desc = desc;
     }
-    int getId(){
+    int getId() const{
         return this->_id;
     }
-    string getName(){
+    string getName() const{
         return this->_name;
     }
-    string getDesc(){
+    string getDesc()const{
         return this->_desc;
     }
 

@@ -15,10 +15,17 @@ message User{
     string state = 4;
 }
 
+
+// 新增："继承"User的消息（通过嵌入实现字段复用）
+message GroupUser {
+  User user = 1;  // 嵌入User消息，自动包含id/name/password/state字段
+  string role = 2;  // 新增字段：角色
+} 
+
 // 群组模块
 message Group{
     uint32 id = 1;
     bytes name = 2;
     bytes desc = 3;
-    repeated bytes users = 4;
+    repeated GroupUser users = 4;
 }

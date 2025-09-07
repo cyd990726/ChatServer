@@ -40,7 +40,8 @@ void ChatService::login(const TcpConnectionPtr &conn, json &js, Timestamp time)
     int id = js["id"].get<int>();
     string pwd = js["password"];
 
-    User user = _userModel.query(id);
+    //查询用户信息
+    User user = _repoProxy.queryUser(id);
     json reponse;
     if(user.getId() == id && user.getPassword() == pwd){
         if(user.getState()=="online"){
@@ -59,21 +60,21 @@ void ChatService::login(const TcpConnectionPtr &conn, json &js, Timestamp time)
 
             //更新状态信息
             user.setState("online");
-            _userModel.updateState(user);
+            _repoProxy.updateUserState(user);
             reponse["msgid"] = LOG_MSG_ACK;
             reponse["errno"] = 0;
             reponse["id"] = user.getId();
             reponse["name"] = user.getName();
 
             //查询用户是否有离线消息
-            vector<string>vec = _offlineMsgModel.query(user.getId());
+            vector<string>vec = _repoProxy.queryOfflineMsg(user.getId());
             if(!vec.empty()){
                 reponse["offlinemsg"] = vec;//把整个列表存储如json中
-                _offlineMsgModel.remove(id);
+                _repoProxy.removeOfflineMsg(id);
             }
 
-            //查询用户的好友信息并返回
-            vector<User> userVec =  _friendModel.query(id);
+            //查询用户的好友信息并返回，放在friends字段里面
+            vector<User> userVec =  _repoProxy.queryFriends(id);
             if(!userVec.empty()){
                 vector<string> vec2;
                 for(auto &e : userVec){
@@ -87,7 +88,7 @@ void ChatService::login(const TcpConnectionPtr &conn, json &js, Timestamp time)
             }
 
             //查询用户的群组信息并返回，放在groups字段里面
-            vector<Group> groups = _groupModel.querGroups(id);
+            vector<Group> groups = _repoProxy.queryGroups(id);
             vector<string> groupStrs;
             for(auto & group : groups){
                 json js1;
@@ -131,7 +132,7 @@ void ChatService::reg(const TcpConnectionPtr &conn, json &js, Timestamp time)
     user.setName(name);
     user.setPassword(pwd);
 
-    bool state = _userModel.insert(user);
+    bool state = _repoProxy.insertUser(user);
 
     json reponse;
     if(state){
@@ -163,14 +164,15 @@ void ChatService::oneChat(const TcpConnectionPtr &conn, json &js, Timestamp time
         }
     }
     //再看一下是否在线
-    User user = _userModel.query(toid);
+    User user = _repoProxy.queryUser(toid);
+
     if(user.getId()!=-1 && user.getState() == "online"){
         _redis.publish(user.getId(), js.dump());
         return;
     }
     if(user.getId() != -1){
         //离线，存储离线消息
-        _offlineMsgModel.insert(toid, js.dump()); 
+        _repoProxy.insertOfflineMsg(toid, js.dump());
     }
 }
 
@@ -203,12 +205,12 @@ void ChatService::clientCloseException(const TcpConnectionPtr &conn){
     //更新状态信息
     if(user.getId() != -1){
         user.setState("offline");
-        _userModel.updateState(user);
+        _repoProxy.updateUserState(user);
     }
 }
 
 void ChatService::reset(){
-    _userModel.resetState();
+    _repoProxy.resetUserState();
 }
 
 //添加好友简单业务，可以根据自己需求调整
@@ -217,7 +219,7 @@ void ChatService::addFriend(const TcpConnectionPtr &conn, json &js, Timestamp ti
     int friendid = js["friendid"].get<int>();
 
     //存储好友信息
-    _friendModel.insert(userid, friendid);
+    _repoProxy.insertFriend(userid, friendid);
 
 }
 
@@ -230,8 +232,9 @@ void ChatService::createGroup(const TcpConnectionPtr &conn, json &js, Timestamp 
 
     //存储新建的群组消息
     Group group(-1, name, desc);
-    if(_groupModel.createGroup(group)){
-        _groupModel.addGroup(userid, group.getId(), "creator");
+    if(_repoProxy.createGroup(group)){
+        //存储群组创建人信息
+        _repoProxy.addGroup(userid, group.getId(), "creator");
     }
 
 }
@@ -239,14 +242,16 @@ void ChatService::createGroup(const TcpConnectionPtr &conn, json &js, Timestamp 
 void ChatService::addGroup(const TcpConnectionPtr &conn, json &js, Timestamp time){
     int userid = js["id"].get<int>();
     int groupid = js["groupid"].get<int>();
-    _groupModel.addGroup(userid, groupid, "normal");
+    //存储群组成员信息
+    _repoProxy.addGroup(userid, groupid, "normal");
 }
 //群组聊天业务
 void ChatService::groupChat(const TcpConnectionPtr &conn, json &js, Timestamp time){
     int userid = js["id"].get<int>();
     int groupid = js["groupid"].get<int>();
     //
-    vector<int> useridVec = _groupModel.queryGroupUSers(userid, groupid);
+    //查询群组的其他成员
+    vector<int> useridVec = _repoProxy.queryGroupUsers(userid, groupid);
     
     lock_guard<mutex> lock(_connMutex);
     for(int id : useridVec){
@@ -255,12 +260,12 @@ void ChatService::groupChat(const TcpConnectionPtr &conn, json &js, Timestamp ti
             it->second->send(js.dump());
         }else{
             //查看toid是否在线
-            User user = _userModel.query(id);
+            User user = _repoProxy.queryUser(id);
             if(user.getState() == "online"){
                 _redis.publish(id, js.dump());
             }else{
                 //存储离线群消息
-                _offlineMsgModel.insert(id, js.dump());
+                _repoProxy.insertOfflineMsg(id, js.dump());
             }
         }
     }
@@ -276,10 +281,10 @@ void ChatService::loginout(const TcpConnectionPtr &conn, json &js, Timestamp tim
         }
     }
     //用户注销，取消订阅通道
-
+     _redis.unsubcribe(userid);
     //更新用户状态信息
     User user(userid, "", "", "offline");
-    _userModel.updateState(user);
+    _repoProxy.updateUserState(user);
 
 }
 
@@ -294,5 +299,5 @@ void ChatService::loginout(const TcpConnectionPtr &conn, json &js, Timestamp tim
         return;
     }
     //存储用户离线消息
-    _offlineMsgModel.insert(userid, msg);
+    _repoProxy.insertOfflineMsg(userid, msg);
  }

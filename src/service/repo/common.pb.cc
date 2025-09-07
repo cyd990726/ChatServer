@@ -14,6 +14,8 @@
 #include <google/protobuf/wire_format.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
+extern PROTOBUF_INTERNAL_EXPORT_common_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_GroupUser_common_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_common_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_User_common_2eproto;
 namespace fixbug {
 class ResultCodeDefaultTypeInternal {
  public:
@@ -23,6 +25,10 @@ class UserDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<User> _instance;
 } _User_default_instance_;
+class GroupUserDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<GroupUser> _instance;
+} _GroupUser_default_instance_;
 class GroupDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<Group> _instance;
@@ -39,8 +45,24 @@ static void InitDefaultsscc_info_Group_common_2eproto() {
   ::fixbug::Group::InitAsDefaultInstance();
 }
 
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_Group_common_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_Group_common_2eproto}, {}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_Group_common_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_Group_common_2eproto}, {
+      &scc_info_GroupUser_common_2eproto.base,}};
+
+static void InitDefaultsscc_info_GroupUser_common_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::fixbug::_GroupUser_default_instance_;
+    new (ptr) ::fixbug::GroupUser();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::fixbug::GroupUser::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_GroupUser_common_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_GroupUser_common_2eproto}, {
+      &scc_info_User_common_2eproto.base,}};
 
 static void InitDefaultsscc_info_ResultCode_common_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -70,7 +92,7 @@ static void InitDefaultsscc_info_User_common_2eproto() {
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_User_common_2eproto =
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_User_common_2eproto}, {}};
 
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_common_2eproto[3];
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_common_2eproto[4];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_common_2eproto = nullptr;
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_common_2eproto = nullptr;
 
@@ -92,6 +114,13 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_common_2eproto::offsets[] PROT
   PROTOBUF_FIELD_OFFSET(::fixbug::User, password_),
   PROTOBUF_FIELD_OFFSET(::fixbug::User, state_),
   ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::fixbug::GroupUser, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::fixbug::GroupUser, user_),
+  PROTOBUF_FIELD_OFFSET(::fixbug::GroupUser, role_),
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::fixbug::Group, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
@@ -104,12 +133,14 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_common_2eproto::offsets[] PROT
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::fixbug::ResultCode)},
   { 7, -1, sizeof(::fixbug::User)},
-  { 16, -1, sizeof(::fixbug::Group)},
+  { 16, -1, sizeof(::fixbug::GroupUser)},
+  { 23, -1, sizeof(::fixbug::Group)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::fixbug::_ResultCode_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::fixbug::_User_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::fixbug::_GroupUser_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::fixbug::_Group_default_instance_),
 };
 
@@ -117,23 +148,26 @@ const char descriptor_table_protodef_common_2eproto[] PROTOBUF_SECTION_VARIABLE(
   "\n\014common.proto\022\006fixbug\"-\n\nResultCode\022\017\n\007"
   "errcode\030\001 \001(\005\022\016\n\006errmsg\030\002 \001(\t\"A\n\004User\022\n\n"
   "\002id\030\001 \001(\r\022\014\n\004name\030\002 \001(\t\022\020\n\010password\030\003 \001("
-  "\t\022\r\n\005state\030\004 \001(\t\">\n\005Group\022\n\n\002id\030\001 \001(\r\022\014\n"
-  "\004name\030\002 \001(\014\022\014\n\004desc\030\003 \001(\014\022\r\n\005users\030\004 \003(\014"
-  "b\006proto3"
+  "\t\022\r\n\005state\030\004 \001(\t\"5\n\tGroupUser\022\032\n\004user\030\001 "
+  "\001(\0132\014.fixbug.User\022\014\n\004role\030\002 \001(\t\"Q\n\005Group"
+  "\022\n\n\002id\030\001 \001(\r\022\014\n\004name\030\002 \001(\014\022\014\n\004desc\030\003 \001(\014"
+  "\022 \n\005users\030\004 \003(\0132\021.fixbug.GroupUserb\006prot"
+  "o3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_common_2eproto_deps[1] = {
 };
-static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_common_2eproto_sccs[3] = {
+static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_common_2eproto_sccs[4] = {
   &scc_info_Group_common_2eproto.base,
+  &scc_info_GroupUser_common_2eproto.base,
   &scc_info_ResultCode_common_2eproto.base,
   &scc_info_User_common_2eproto.base,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_common_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_common_2eproto = {
-  false, false, descriptor_table_protodef_common_2eproto, "common.proto", 208,
-  &descriptor_table_common_2eproto_once, descriptor_table_common_2eproto_sccs, descriptor_table_common_2eproto_deps, 3, 0,
+  false, false, descriptor_table_protodef_common_2eproto, "common.proto", 282,
+  &descriptor_table_common_2eproto_once, descriptor_table_common_2eproto_sccs, descriptor_table_common_2eproto_deps, 4, 0,
   schemas, file_default_instances, TableStruct_common_2eproto::offsets,
-  file_level_metadata_common_2eproto, 3, file_level_enum_descriptors_common_2eproto, file_level_service_descriptors_common_2eproto,
+  file_level_metadata_common_2eproto, 4, file_level_enum_descriptors_common_2eproto, file_level_service_descriptors_common_2eproto,
 };
 
 // Force running AddDescriptors() at dynamic initialization time.
@@ -690,6 +724,259 @@ void User::InternalSwap(User* other) {
 
 // ===================================================================
 
+void GroupUser::InitAsDefaultInstance() {
+  ::fixbug::_GroupUser_default_instance_._instance.get_mutable()->user_ = const_cast< ::fixbug::User*>(
+      ::fixbug::User::internal_default_instance());
+}
+class GroupUser::_Internal {
+ public:
+  static const ::fixbug::User& user(const GroupUser* msg);
+};
+
+const ::fixbug::User&
+GroupUser::_Internal::user(const GroupUser* msg) {
+  return *msg->user_;
+}
+GroupUser::GroupUser(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+  SharedCtor();
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:fixbug.GroupUser)
+}
+GroupUser::GroupUser(const GroupUser& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  role_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_role().empty()) {
+    role_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_role(),
+      GetArena());
+  }
+  if (from._internal_has_user()) {
+    user_ = new ::fixbug::User(*from.user_);
+  } else {
+    user_ = nullptr;
+  }
+  // @@protoc_insertion_point(copy_constructor:fixbug.GroupUser)
+}
+
+void GroupUser::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_GroupUser_common_2eproto.base);
+  role_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  user_ = nullptr;
+}
+
+GroupUser::~GroupUser() {
+  // @@protoc_insertion_point(destructor:fixbug.GroupUser)
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+void GroupUser::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
+  role_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (this != internal_default_instance()) delete user_;
+}
+
+void GroupUser::ArenaDtor(void* object) {
+  GroupUser* _this = reinterpret_cast< GroupUser* >(object);
+  (void)_this;
+}
+void GroupUser::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void GroupUser::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const GroupUser& GroupUser::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_GroupUser_common_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void GroupUser::Clear() {
+// @@protoc_insertion_point(message_clear_start:fixbug.GroupUser)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  role_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  if (GetArena() == nullptr && user_ != nullptr) {
+    delete user_;
+  }
+  user_ = nullptr;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* GroupUser::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // .fixbug.User user = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_user(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // string role = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          auto str = _internal_mutable_role();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "fixbug.GroupUser.role"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* GroupUser::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:fixbug.GroupUser)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // .fixbug.User user = 1;
+  if (this->has_user()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        1, _Internal::user(this), target, stream);
+  }
+
+  // string role = 2;
+  if (this->role().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_role().data(), static_cast<int>(this->_internal_role().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "fixbug.GroupUser.role");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_role(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:fixbug.GroupUser)
+  return target;
+}
+
+size_t GroupUser::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:fixbug.GroupUser)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string role = 2;
+  if (this->role().size() > 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_role());
+  }
+
+  // .fixbug.User user = 1;
+  if (this->has_user()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *user_);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void GroupUser::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:fixbug.GroupUser)
+  GOOGLE_DCHECK_NE(&from, this);
+  const GroupUser* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<GroupUser>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:fixbug.GroupUser)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:fixbug.GroupUser)
+    MergeFrom(*source);
+  }
+}
+
+void GroupUser::MergeFrom(const GroupUser& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:fixbug.GroupUser)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.role().size() > 0) {
+    _internal_set_role(from._internal_role());
+  }
+  if (from.has_user()) {
+    _internal_mutable_user()->::fixbug::User::MergeFrom(from._internal_user());
+  }
+}
+
+void GroupUser::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:fixbug.GroupUser)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void GroupUser::CopyFrom(const GroupUser& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:fixbug.GroupUser)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool GroupUser::IsInitialized() const {
+  return true;
+}
+
+void GroupUser::InternalSwap(GroupUser* other) {
+  using std::swap;
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  role_.Swap(&other->role_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  swap(user_, other->user_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata GroupUser::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
 void Group::InitAsDefaultInstance() {
 }
 class Group::_Internal {
@@ -799,14 +1086,13 @@ const char* Group::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::inte
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // repeated bytes users = 4;
+      // repeated .fixbug.GroupUser users = 4;
       case 4:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 34)) {
           ptr -= 1;
           do {
             ptr += 1;
-            auto str = _internal_add_users();
-            ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+            ptr = ctx->ParseMessage(_internal_add_users(), ptr);
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<34>(ptr));
@@ -858,10 +1144,12 @@ failure:
         3, this->_internal_desc(), target);
   }
 
-  // repeated bytes users = 4;
-  for (int i = 0, n = this->_internal_users_size(); i < n; i++) {
-    const auto& s = this->_internal_users(i);
-    target = stream->WriteBytes(4, s, target);
+  // repeated .fixbug.GroupUser users = 4;
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->_internal_users_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(4, this->_internal_users(i), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -880,12 +1168,11 @@ size_t Group::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // repeated bytes users = 4;
-  total_size += 1 *
-      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(users_.size());
-  for (int i = 0, n = users_.size(); i < n; i++) {
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
-      users_.Get(i));
+  // repeated .fixbug.GroupUser users = 4;
+  total_size += 1UL * this->_internal_users_size();
+  for (const auto& msg : this->users_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
   // bytes name = 2;
@@ -992,6 +1279,9 @@ template<> PROTOBUF_NOINLINE ::fixbug::ResultCode* Arena::CreateMaybeMessage< ::
 }
 template<> PROTOBUF_NOINLINE ::fixbug::User* Arena::CreateMaybeMessage< ::fixbug::User >(Arena* arena) {
   return Arena::CreateMessageInternal< ::fixbug::User >(arena);
+}
+template<> PROTOBUF_NOINLINE ::fixbug::GroupUser* Arena::CreateMaybeMessage< ::fixbug::GroupUser >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::fixbug::GroupUser >(arena);
 }
 template<> PROTOBUF_NOINLINE ::fixbug::Group* Arena::CreateMaybeMessage< ::fixbug::Group >(Arena* arena) {
   return Arena::CreateMessageInternal< ::fixbug::Group >(arena);

@@ -18,6 +18,7 @@ include_directories(${PROJECT_SOURCE_DIR}/include/thirdparty)
 include_directories(${PROJECT_SOURCE_DIR}/include/thirdparty/db)
 include_directories(${PROJECT_SOURCE_DIR}/include/thirdparty/redis)
 include_directories(${PROJECT_SOURCE_DIR}/include/public)
+include_directories(${PROJECT_SOURCE_DIR}/include/proxy)
 
 
 # 设置项目库文件搜索路径

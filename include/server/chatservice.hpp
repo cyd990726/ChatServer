@@ -12,6 +12,7 @@
 #include "friendmodel.hpp"
 #include "groupmodel.hpp"
 #include "redis.hpp"
+#include "repo_proxy.h"
 
 
 #include <mutex>
@@ -57,10 +58,12 @@ public:
 private:
     ChatService();//阻止构造
     unordered_map<MSGID, MsgHandler> _msgHandlerMap;
-    UserModel _userModel;
-    OfflineMsgModel _offlineMsgModel;
-    FriendModel _friendModel;
-    GroupModel _groupModel;
+    // UserModel _userModel;
+    // OfflineMsgModel _offlineMsgModel;
+    // FriendModel _friendModel;
+    // GroupModel _groupModel;
+    RepoProxy _repoProxy;
+
     Redis _redis;
     //因为是一个聊天服务器集群，
     //所以服务器要分发消息给各个客户端，故要记录在线的客户端的连接，以便于发送
