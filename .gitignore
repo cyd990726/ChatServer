@@ -12,6 +12,9 @@ build/
 bin/
 obj/
 out/
+mrpc/bin/
+mrpc/obj/
+mrpc/build/
 
 # 调试相关文件
 *.dSYM/
