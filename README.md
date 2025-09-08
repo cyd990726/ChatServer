@@ -1,16 +1,53 @@
 # ChatServer
 
-#### 介绍
+## 简介
 
 一个简单的分布式聊天服务器
 
-#### 软件架构
+## 软件架构
 
-此项目使用c++语言基于muduo网络库进行开发，数据库使用mysql，使用redis是消息队列，可通过nginx进行负载均衡，可部署多台形成服务器集群，从而大大提高并发量。
 ![alt text](image.png)
 
-#### 安装教程
+## 安装教程
 
-1. 所需环境：linux + cmake + g++，并且安装了boost和muduo网络库
-2. 在项目根目录下创建build目录，cd build进入build目录，执行cmake ..,再执行make即可编译成功。
-3. 切换到bin目录下。执行./ChatServer port启动服务器，或者执行。./ChatClient ip port启动测试客户端
+### 前置准备
+1. 安装protobuf
+输入以下命令安装protobuf
+```
+sudo apt update
+sudo apt install protobuf-compiler libprotobuf-dev
+```
+检查是否安装成功
+```
+protoc --version
+```
+2. 安装zookeeper开发库
+```
+sudo apt update && sudo apt install libzookeeper-mt-dev
+```
+3. 安装mysql开发库
+```
+sudo apt update && sudo apt install libmysqlclient-dev
+```
+4. 安装redis开发库
+```
+sudo apt update && sudo apt install libhiredis-dev
+``` 
+5. 安装muduo网络库
+```
+sudo apt update && sudo apt install libmuduo-net-dev libmuduo-base-dev
+```
+
+### 编译rpc框架
+1. 通过命令`cd mrpc`切到mrpc目录下
+2. 输入`sh configure.sh`一键编译安装。
+
+### 编译聊天服务器
+1. 切换到项目根目录
+2. 输入`sh configure.sh`一键编译安装。
+
+### 启动服务器
+1. 切换到bin目录下
+2. 执行./ChatServer port启动请求处理服务器
+3. 执行./RepoService 启动存储层服务
+4. 输入./ChatClient ip port启动测试客户端
