@@ -51,3 +51,15 @@ sudo apt update && sudo apt install libmuduo-net-dev libmuduo-base-dev
 2. 执行./ChatServer port启动请求处理服务器
 3. 执行./RepoService 启动存储层服务
 4. 输入./ChatClient ip port启动测试客户端
+
+### 新增服务
+1. 编写服务接口配置文件xxx.proto
+2. 输入命令：
+```
+protoc --cpp_out=./ --grpc_out=./ --plugin=protoc-gen-grpc=`which grpc_cpp_plugin` xxx.proto
+```
+3. 注册服务
+
+### 集群部署
+...
+
