@@ -15,6 +15,7 @@ out/
 mrpc/bin/
 mrpc/obj/
 mrpc/build/
+.vscode/
 
 # 调试相关文件
 *.dSYM/

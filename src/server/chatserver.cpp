@@ -28,6 +28,8 @@ void ChatServer::start(){
 //专门处理用户的连接和断开的回调函数
 void ChatServer::onConnection(const TcpConnectionPtr &conn)
 {
+    // 先进行加密
+
     if(!conn->connected()){
         ChatService::instance()->clientCloseException(conn);
         //说明用户断开了连接。我们需要shutdown这个连接,回收资源
