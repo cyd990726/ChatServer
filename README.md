@@ -6,7 +6,7 @@
 
 ## 软件架构
 
-![alt text](image.png)
+![alt text](image-1.png)
 
 ## 安装教程
 
